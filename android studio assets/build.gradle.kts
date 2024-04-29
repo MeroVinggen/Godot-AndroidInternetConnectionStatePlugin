@@ -9,7 +9,7 @@ android {
 
     defaultConfig {
         minSdk = 24
-        setProperty("archivesBaseName", "InternetConnectionStatePlugin")
+        setProperty("archivesBaseName", "AndroidInternetConnectionStatePlugin")
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
     }

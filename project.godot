@@ -17,11 +17,11 @@ config/icon="res://icon.png"
 
 [autoload]
 
-InternetConnectionStatePlugin="*res://addons/InternetConnectionStatePlugin/export_plugin.gd"
+AndroidInternetConnectionStatePlugin="*res://addons/AndroidInternetConnectionStatePlugin/export_plugin.gd"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/InternetConnectionStatePlugin/plugin.cfg")
+enabled=PackedStringArray("res://addons/AndroidInternetConnectionStatePlugin/plugin.cfg")
 
 [rendering]
 

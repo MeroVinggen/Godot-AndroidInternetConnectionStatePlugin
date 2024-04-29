@@ -17,7 +17,7 @@ import org.godotengine.godot.plugin.UsedByGodot
 
 class GodotAndroidPlugin(godot: Godot): GodotPlugin(godot) {
 
-    override fun getPluginName() = "InternetConnectionStatePlugin"
+    override fun getPluginName() = "AndroidInternetConnectionStatePlugin"
 
     private var stateUpdateDelay: Long = 1500
     private var preState: Boolean = false

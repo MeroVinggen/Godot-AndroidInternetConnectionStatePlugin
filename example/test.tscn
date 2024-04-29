@@ -82,8 +82,7 @@ offset_top = 450.0
 offset_right = 920.0
 offset_bottom = 473.0
 scale = Vector2(3.32874, 3.32874)
-text = "false
-"
+text = "false"
 
 [connection signal="pressed" from="getStateButton" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="resetButton" to="." method="_on_reset_button_pressed"]

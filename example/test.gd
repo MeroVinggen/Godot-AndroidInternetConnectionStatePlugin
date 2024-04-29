@@ -1,24 +1,24 @@
 extends Node2D
 
-var _InternetConnectionStatePlugin
+var _AndroidInternetConnectionStatePlugin
 
 func _ready():
 	if OS.get_name() == "Android":
-		if Engine.has_singleton("InternetConnectionStatePlugin"):
-			_InternetConnectionStatePlugin = Engine.get_singleton("InternetConnectionStatePlugin")
+		if Engine.has_singleton("AndroidInternetConnectionStatePlugin"):
+			_AndroidInternetConnectionStatePlugin = Engine.get_singleton("AndroidInternetConnectionStatePlugin")
 		else:
-			printerr("InternetConnectionStatePlugin is not available on this Android device")
+			printerr("AndroidInternetConnectionStatePlugin is not available on this Android device")
 	else:
-		printerr("InternetConnectionStatePlugin is available only at Android platform")
+		printerr("AndroidInternetConnectionStatePlugin is available only at Android platform")
 
 
-func _onInternetStateChange(data):
+func _onInternetConnectionStateChange(data):
 	$Label.text = str(data)
 	$HistoryLabel.text += str(data) + "\n"
 
 
 func _on_button_pressed() -> void:
-	$Label.text = str(_InternetConnectionStatePlugin.isNetworkConnected())
+	$Label.text = str(_AndroidInternetConnectionStatePlugin.isNetworkConnected())
 
 
 func _on_reset_button_pressed() -> void:
@@ -27,9 +27,9 @@ func _on_reset_button_pressed() -> void:
 
 
 func _on_subscribe_button_pressed() -> void:
-	_InternetConnectionStatePlugin.connect("hasNetwork", _onInternetStateChange)
+	_AndroidInternetConnectionStatePlugin.connect("hasNetwork", _onInternetConnectionStateChange)
 	$SubscriptionState.text = "true"
 
 func _on_unsubscribe_button_pressed() -> void:
-	_InternetConnectionStatePlugin.disconnect("hasNetwork", _onInternetStateChange)
+	_AndroidInternetConnectionStatePlugin.disconnect("hasNetwork", _onInternetConnectionStateChange)
 	$SubscriptionState.text = "false"
