@@ -2,8 +2,9 @@
   <img src="./icon.png"  height="100" alt="Godot-InternetConnectionStatePlugin Icon"/>
 </p>
 
-# Godot Internet Connection State Plugin
-
+<h1 align="center">
+  Godot Internet Connection State Plugin
+</h1>
 
 ## About
 
