@@ -74,13 +74,13 @@ offset_top = 463.0
 offset_right = 666.0
 offset_bottom = 486.0
 scale = Vector2(1.94425, 1.94425)
-text = "Subscription:"
+text = "State Subscription:"
 
 [node name="SubscriptionState" type="Label" parent="."]
-offset_left = 880.0
-offset_top = 450.0
-offset_right = 920.0
-offset_bottom = 473.0
+offset_left = 959.0
+offset_top = 447.0
+offset_right = 999.0
+offset_bottom = 470.0
 scale = Vector2(3.32874, 3.32874)
 text = "false"
 
