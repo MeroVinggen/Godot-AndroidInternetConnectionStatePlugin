@@ -1,6 +1,6 @@
-<div style="text-align:center">
+<p align="center">
   <img src="./icon.png"  height="100" alt="Godot-InternetConnectionStatePlugin Icon"/>
-</div>
+</p>
 
 # Godot Internet Connection State Plugin
 
