@@ -1,5 +1,6 @@
-<img src="./icon.png"  height="100" alt="Godot-InternetConnectionStatePlugin Icon"/>
-
+<div style="text-align:center">
+  <img src="./icon.png"  height="100" alt="Godot-InternetConnectionStatePlugin Icon"/>
+</div>
 
 # Godot Internet Connection State Plugin
 
@@ -59,7 +60,7 @@ var _AndroidInternetConnectionStatePlugin = Engine.get_singleton("AndroidInterne
     _AndroidInternetConnectionStatePlugin.connect("hasNetwork", _onInternetConnectionStateChange)
 
     func _onInternetConnectionStateChange(data):
-      # add print to console etc.>
+      # add print to console etc.
       pass
     ```
 
@@ -80,4 +81,9 @@ var _AndroidInternetConnectionStatePlugin = Engine.get_singleton("AndroidInterne
 ## Warning
 
 The plugin itself cannot determine whether the user has **Internet access** or not! It can only check the connection status.
-> For example: if the user is connected to Wi-Fi but does not have actual Internet access, the plugin will return the connection status as **true**.
+> For example: if the user is connected to Wi-Fi but does not have actual Internet access, in this case the plugin will return the connection status as **true**.
+
+
+## Extra
+
+You can find implementation assets of the plugin in the Android Studio Assets folder, feel free to explore. 
