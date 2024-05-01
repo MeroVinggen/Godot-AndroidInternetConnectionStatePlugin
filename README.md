@@ -79,7 +79,7 @@ var _AndroidInternetConnectionStatePlugin = Engine.get_singleton("AndroidInterne
 > If you have already installed the plugin without the "example" folder, just download it from the current repository and place it in your project, all other steps remain the same.
 
 
-## Warning
+## <span style="color: orange"> Warning </span>
 
 The plugin itself cannot determine whether the user has **Internet access** or not! It can only check the connection status.
 > For example: if the user is connected to Wi-Fi but does not have actual Internet access, in this case the plugin will return the connection status as **true**.
