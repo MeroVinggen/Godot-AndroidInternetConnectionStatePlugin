@@ -15,10 +15,6 @@ run/main_scene="res://example/test.tscn"
 config/features=PackedStringArray("4.2", "Mobile")
 config/icon="res://icon.png"
 
-[autoload]
-
-AndroidInternetConnectionStatePlugin="*res://addons/AndroidInternetConnectionStatePlugin/export_plugin.gd"
-
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/AndroidInternetConnectionStatePlugin/plugin.cfg")
