@@ -1,24 +1,19 @@
 extends Node2D
 
-var _AndroidInternetConnectionStatePlugin
+# - update clas and lib names (com.example.mylibrary GodotAndroidPlugin)
+# 	- care! dirst make commit in both godot and adroid studio
+# - check cloud improvement suggestions
+# - update test scene
+# - update readme
+# - update notes in notion
 
-func _ready():
-	if OS.get_name() == "Android":
-		if Engine.has_singleton("AndroidInternetConnectionStatePlugin"):
-			_AndroidInternetConnectionStatePlugin = Engine.get_singleton("AndroidInternetConnectionStatePlugin")
-		else:
-			printerr("AndroidInternetConnectionStatePlugin is not available on this Android device")
-	else:
-		printerr("AndroidInternetConnectionStatePlugin is available only at Android platform")
-
-
-func _onInternetConnectionStateChange(data):
-	$Label.text = str(data)
-	$HistoryLabel.text += str(data) + "\n"
+func _onInternetConnectionStateChange(state: bool):
+	$Label.text = str(state)
+	$HistoryLabel.text += str(state) + "\n"
 
 
 func _on_button_pressed() -> void:
-	$Label.text = str(_AndroidInternetConnectionStatePlugin.isNetworkConnected())
+	$Label.text = str(AndroidNetworkStateNode.hasNetwork())
 
 
 func _on_reset_button_pressed() -> void:
@@ -27,9 +22,13 @@ func _on_reset_button_pressed() -> void:
 
 
 func _on_subscribe_button_pressed() -> void:
-	_AndroidInternetConnectionStatePlugin.connect("hasNetwork", _onInternetConnectionStateChange)
+	if AndroidNetworkStateNode.stateChanged.is_connected(_onInternetConnectionStateChange):
+		return
+	AndroidNetworkStateNode.stateChanged.connect(_onInternetConnectionStateChange)
 	$SubscriptionState.text = "true"
 
 func _on_unsubscribe_button_pressed() -> void:
-	_AndroidInternetConnectionStatePlugin.disconnect("hasNetwork", _onInternetConnectionStateChange)
+	if not AndroidNetworkStateNode.stateChanged.is_connected(_onInternetConnectionStateChange):
+		return
+	AndroidNetworkStateNode.stateChanged.disconnect(_onInternetConnectionStateChange)
 	$SubscriptionState.text = "false"

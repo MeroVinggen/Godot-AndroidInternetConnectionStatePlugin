@@ -51,19 +51,19 @@ var _AndroidInternetConnectionStatePlugin = Engine.get_singleton("AndroidInterne
 ```
 4. Check connection:
 
-    4.1 On-demand check by calling `isNetworkConnected` method:
-    ```
-    # return bool (true if connected, otherwise - false)
-    _AndroidInternetConnectionStatePlugin.isNetworkConnected()
-    ```
-    4.2 Real-time check by connection to "hasNetwork" signal:
-    ```
-    _AndroidInternetConnectionStatePlugin.connect("hasNetwork", _onInternetConnectionStateChange)
+	4.1 On-demand check by calling `isNetworkConnected` method:
+	```
+	# return bool (true if connected, otherwise - false)
+	_AndroidInternetConnectionStatePlugin.isNetworkConnected()
+	```
+	4.2 Real-time check by connection to "hasNetwork" signal:
+	```
+	_AndroidInternetConnectionStatePlugin.connect("hasNetwork", _onInternetConnectionStateChange)
 
-    func _onInternetConnectionStateChange(data):
-      # add print to console etc.
-      pass
-    ```
+	func _onInternetConnectionStateChange(data):
+	  # add print to console etc.
+	  pass
+	```
 
 
 ## Demo

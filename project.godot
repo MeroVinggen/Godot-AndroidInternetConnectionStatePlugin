@@ -11,9 +11,14 @@ config_version=5
 [application]
 
 config/name="Android internet connection state plugin"
+config/tags=PackedStringArray("my_plugin")
 run/main_scene="res://example/test.tscn"
-config/features=PackedStringArray("4.2", "Mobile")
+config/features=PackedStringArray("4.4", "Mobile")
 config/icon="res://icon.png"
+
+[autoload]
+
+AndroidNetworkStateNode="*res://addons/AndroidInternetConnectionStatePlugin/AndroidNetworkState.gd"
 
 [editor_plugins]
 
