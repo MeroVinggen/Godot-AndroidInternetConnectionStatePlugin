@@ -76,7 +76,7 @@ func onNetStateChanged(state: bool):
 
 ## Demo Preview
 
-[demo](./demo.mp4)
+![demo](./demo.webp)
 
 
 ## Warning
