@@ -5,12 +5,12 @@ signal stateChanged(curState: bool)
 
 const _pluginName = "AndroidInternetConnectionStatePlugin"
 var _pluginObj: Object
+var _isAvailable: bool = false
 
 
-func _ready() -> void:
+func _init() -> void:
 	if OS.get_name() == "Android":
 		if Engine.has_singleton(_pluginName):
-			_pluginObj = Engine.get_singleton(_pluginName)
 			_initialize()
 		else:
 			printerr("AndroidInternetConnectionStatePlugin is not available on this Android device")
@@ -19,6 +19,8 @@ func _ready() -> void:
 
 
 func _initialize() -> void:
+	_isAvailable = true
+	_pluginObj = Engine.get_singleton(_pluginName)
 	# forward signals
 	_pluginObj.stateChanged.connect(func(state: String) -> void: stateChanged.emit(state == "true"))
 

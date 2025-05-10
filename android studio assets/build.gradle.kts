@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace = "com.example.mylibrary"
+    namespace = "io.github.mero.networkconnectionstate"
     compileSdk = 34
 
     defaultConfig {

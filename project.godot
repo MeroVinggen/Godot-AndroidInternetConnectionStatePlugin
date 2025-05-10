@@ -20,6 +20,13 @@ config/icon="res://icon.png"
 
 AndroidNetworkStateNode="*res://addons/AndroidInternetConnectionStatePlugin/AndroidNetworkState.gd"
 
+[display]
+
+window/size/viewport_width=400
+window/size/viewport_height=800
+window/stretch/mode="canvas_items"
+window/handheld/orientation=1
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/AndroidInternetConnectionStatePlugin/plugin.cfg")
