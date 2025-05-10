@@ -62,7 +62,7 @@ func onNetStateChanged(state: bool):
 ```
 
 
-## Demo
+## Example
 
 > Note: don't forget to check "Requirements" & "Usage" sections.
 
@@ -74,7 +74,7 @@ func onNetStateChanged(state: bool):
 > If you have already installed the plugin without the "example" folder, you can download it from the current repository and place it in your project, all other steps remain the same or remove the project folder from your project and install it again with checked example folder.
 
 
-## Demo Preview
+## Example preview
 
 <div align="center">
 <img src="./demo.webp" height="400">
