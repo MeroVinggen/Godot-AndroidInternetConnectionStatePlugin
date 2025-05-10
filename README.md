@@ -76,8 +76,10 @@ func onNetStateChanged(state: bool):
 
 ## Demo Preview
 
-![demo](./demo.webp)
+<div align="center">
+<img src="./demo.webp" height="400">
 
+</div>
 
 ## Warning
 
