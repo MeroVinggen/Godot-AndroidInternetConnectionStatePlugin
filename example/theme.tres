@@ -1,0 +1,15 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://dnelevd6vqpti"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wv5ta"]
+bg_color = Color(0.20871, 0.20871, 0.20871, 1)
+expand_margin_left = 10.0
+expand_margin_top = 10.0
+expand_margin_right = 10.0
+expand_margin_bottom = 10.0
+
+[resource]
+default_font_size = 35
+Button/styles/focus = SubResource("StyleBoxFlat_wv5ta")
+Button/styles/hover = SubResource("StyleBoxFlat_wv5ta")
+Button/styles/normal = SubResource("StyleBoxFlat_wv5ta")
+Button/styles/pressed = SubResource("StyleBoxFlat_wv5ta")

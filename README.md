@@ -38,32 +38,28 @@ Special thanks to the YouTube channel “Coding With Nothing”.
 
 
 ## Usage
-  
-> Note: the plugin registers itself as *Autoload* under the name "AndroidInternetConnectionStatePlugin".
 
 > Note: don't forget to check "Requirements" section.
 
-1. Install the plugin
-2. Enable the plugin in Godot (Project -> Project Settings -> Plugins Tab)
-3. Obtain the plugin instance:
-```
-var _AndroidInternetConnectionStatePlugin = Engine.get_singleton("AndroidInternetConnectionStatePlugin")
-```
-4. Check connection:
+> You may find usage as autoload example in "example" folder
 
-	4.1 On-demand check by calling `isNetworkConnected` method:
-	```
-	# return bool (true if connected, otherwise - false)
-	_AndroidInternetConnectionStatePlugin.isNetworkConnected()
-	```
-	4.2 Real-time check by connection to "hasNetwork" signal:
-	```
-	_AndroidInternetConnectionStatePlugin.connect("hasNetwork", _onInternetConnectionStateChange)
+- add `AndroidNetworkState.gd` from plugins folder to globals (autoload) at Project -> Project Settings -> Globals (autoload) 
+or instantiate `AndroidNetworkState`
+```
+var netState: AndroidNetworkState = AndroidNetworkState.new()
+```
+- use `hasNetwork` method to get current connection state:
+```
+print("cur net connection state: ", netState.hasNetwork())
+```
+- subscribe to `stateChanged(curState: bool)` signal to get current connection state on change:
+```
+func _ready() -> void:
+  netState.stateChanged.connect(onNetStateChanged)
 
-	func _onInternetConnectionStateChange(data):
-	  # add print to console etc.
-	  pass
-	```
+func onNetStateChanged(state: bool):
+	# your code
+```
 
 
 ## Demo
@@ -73,15 +69,14 @@ var _AndroidInternetConnectionStatePlugin = Engine.get_singleton("AndroidInterne
 - Install the plugin and leave "example" folder as selected
 - Set the "example/test.tscn" scene as main in your project
 - Install Android build templates
-- Export project for Android
-- Run the app on your Android device
+- Export project for Android and run the app on your Android device or use remote deploy
 
-> If you have already installed the plugin without the "example" folder, just download it from the current repository and place it in your project, all other steps remain the same.
+> If you have already installed the plugin without the "example" folder, you can download it from the current repository and place it in your project, all other steps remain the same or remove the project folder from your project and install it again with checked example folder.
 
 
 ## Demo Preview
 
-![record demo](./recordDemo.gif)
+![record demo](./demo.mp4)
 
 
 ## Warning

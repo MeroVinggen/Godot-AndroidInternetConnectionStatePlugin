@@ -1,90 +1,74 @@
-[gd_scene load_steps=2 format=3 uid="uid://cfh7hrwgadwq0"]
+[gd_scene load_steps=3 format=3 uid="uid://cfh7hrwgadwq0"]
 
 [ext_resource type="Script" uid="uid://dkti05ymqh5pb" path="res://example/test.gd" id="1_2wfck"]
+[ext_resource type="Theme" uid="uid://dnelevd6vqpti" path="res://example/theme.tres" id="1_ilcrk"]
 
-[node name="Test" type="Node2D"]
+[node name="Test" type="MarginContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_ilcrk")
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
 script = ExtResource("1_2wfck")
 
-[node name="Label" type="Label" parent="."]
-offset_left = 55.0
-offset_top = 86.0
-offset_right = 95.0
-offset_bottom = 109.0
-scale = Vector2(7.15925, 6.92442)
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 40
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 50
+alignment = 1
+
+[node name="StateLabel" type="Label" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "has network:"
+
+[node name="StateValueLabel" type="Label" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
 text = "null"
 
-[node name="Label2" type="Label" parent="."]
-offset_left = 15.0
-offset_top = 18.0
-offset_right = 59.0
-offset_bottom = 41.0
-scale = Vector2(1.71879, 1.71879)
-text = "state:"
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+alignment = 1
 
-[node name="Label3" type="Label" parent="."]
-offset_left = 724.0
-offset_top = 44.0
-offset_right = 783.0
-offset_bottom = 67.0
-scale = Vector2(1.63979, 1.63979)
-text = "history:"
-
-[node name="HistoryLabel" type="Label" parent="."]
-offset_left = 815.0
-offset_top = 118.0
-offset_right = 855.0
-offset_bottom = 141.0
-scale = Vector2(3.1491, 3.1491)
-
-[node name="getStateButton" type="Button" parent="."]
-offset_left = 55.0
-offset_top = 356.0
-offset_right = 131.0
-offset_bottom = 387.0
-scale = Vector2(3.05607, 3.17171)
+[node name="getStateButton" type="Button" parent="VBoxContainer/HBoxContainer2"]
+layout_mode = 2
 text = "get state"
 
-[node name="resetButton" type="Button" parent="."]
-offset_left = 94.0
-offset_top = 501.0
-offset_right = 142.0
-offset_bottom = 532.0
-scale = Vector2(3.29807, 3.29807)
-text = "clear"
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer"]
+layout_mode = 2
 
-[node name="SubscribeButton" type="Button" parent="."]
-offset_left = 387.0
-offset_top = 402.0
-offset_right = 471.0
-offset_bottom = 433.0
-scale = Vector2(1.94634, 1.94634)
-text = "Subscribe"
+[node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 50
 
-[node name="UnsubscribeButton" type="Button" parent="."]
-offset_left = 371.0
-offset_top = 520.0
-offset_right = 476.0
-offset_bottom = 551.0
-scale = Vector2(2.02026, 2.02026)
-text = "Unsubscribe"
+[node name="SubscriptionLabel" type="Label" parent="VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+text = "Subscription:"
 
-[node name="SubscriptionLabel" type="Label" parent="."]
-offset_left = 626.0
-offset_top = 463.0
-offset_right = 666.0
-offset_bottom = 486.0
-scale = Vector2(1.94425, 1.94425)
-text = "State Subscription:"
-
-[node name="SubscriptionState" type="Label" parent="."]
-offset_left = 959.0
-offset_top = 447.0
-offset_right = 999.0
-offset_bottom = 470.0
-scale = Vector2(3.32874, 3.32874)
+[node name="SubscriptionState" type="Label" parent="VBoxContainer/HBoxContainer3"]
+layout_mode = 2
 text = "false"
 
-[connection signal="pressed" from="getStateButton" to="." method="_on_button_pressed"]
-[connection signal="pressed" from="resetButton" to="." method="_on_reset_button_pressed"]
-[connection signal="pressed" from="SubscribeButton" to="." method="_on_subscribe_button_pressed"]
-[connection signal="pressed" from="UnsubscribeButton" to="." method="_on_unsubscribe_button_pressed"]
+[node name="VBoxContainer4" type="VBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 50
+
+[node name="SubscribeButton" type="Button" parent="VBoxContainer/VBoxContainer4"]
+layout_mode = 2
+text = "Subscribe"
+
+[node name="UnsubscribeButton" type="Button" parent="VBoxContainer/VBoxContainer4"]
+layout_mode = 2
+text = "Unsubscribe"
+
+[connection signal="pressed" from="VBoxContainer/HBoxContainer2/getStateButton" to="." method="updateInternetConnectionState"]
+[connection signal="pressed" from="VBoxContainer/VBoxContainer4/SubscribeButton" to="." method="_onSubscribeButtonPressed"]
+[connection signal="pressed" from="VBoxContainer/VBoxContainer4/UnsubscribeButton" to="." method="_onUnsubscribeButtonPressed"]

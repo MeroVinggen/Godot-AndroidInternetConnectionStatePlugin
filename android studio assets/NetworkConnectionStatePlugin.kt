@@ -1,4 +1,4 @@
-package com.example.mylibrary
+package io.github.mero.networkconnectionstate
 
 
 import android.content.Context
@@ -8,14 +8,13 @@ import android.net.NetworkCapabilities
 import android.net.NetworkRequest
 import android.os.Handler
 import android.os.Looper
-import androidx.core.content.ContextCompat.getSystemService
 import org.godotengine.godot.Godot
 import org.godotengine.godot.plugin.GodotPlugin
 import org.godotengine.godot.plugin.SignalInfo
 import org.godotengine.godot.plugin.UsedByGodot
 
 
-class GodotAndroidPlugin(godot: Godot): GodotPlugin(godot) {
+class NetworkConnectionStatePlugin(godot: Godot): GodotPlugin(godot) {
 
     override fun getPluginName() = "AndroidInternetConnectionStatePlugin"
 
@@ -33,7 +32,7 @@ class GodotAndroidPlugin(godot: Godot): GodotPlugin(godot) {
 
     override fun getPluginSignals(): MutableSet<SignalInfo> {
         val signals: MutableSet<SignalInfo> = mutableSetOf()
-        signals.add(SignalInfo("hasNetwork", String::class.java))
+        signals.add(SignalInfo("stateChanged", String::class.java))
         return signals
     }
 
@@ -69,7 +68,7 @@ class GodotAndroidPlugin(godot: Godot): GodotPlugin(godot) {
 
         preState = networkConnectionState
 
-        emitSignal("hasNetwork", "$networkConnectionState")
+        emitSignal("stateChanged", "$networkConnectionState")
     }
 
     @UsedByGodot

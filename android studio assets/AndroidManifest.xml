@@ -4,6 +4,6 @@
     <application>
         <meta-data
             android:name="org.godotengine.plugin.v2.AndroidInternetConnectionStatePlugin"
-            android:value="com.example.mylibrary.GodotAndroidPlugin"/>
+            android:value="io.github.mero.networkconnectionstate.NetworkConnectionStatePlugin"/>
     </application>
 </manifest>

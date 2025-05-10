@@ -6,11 +6,8 @@ var _exportPlugin: AndroidNetworkStateExportPlugin
 
 
 func _enter_tree():
-	if OS.get_name() == "Android":
-		_exportPlugin = AndroidNetworkStateExportPlugin.new(_pluginName)
-		add_export_plugin(_exportPlugin)
-	else:
-		push_warning("AndroidInternetConnectionStatePlugin is available only at Android platform, the autoload has not beed registered")
+	_exportPlugin = AndroidNetworkStateExportPlugin.new(_pluginName)
+	add_export_plugin(_exportPlugin)
 
 
 func _exit_tree():
