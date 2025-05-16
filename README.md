@@ -13,6 +13,13 @@ The plugin provides you with the ability to check whether the Android user is co
 Special thanks to the YouTube channel “Coding With Nothing”.
 
 
+## Example preview
+
+<div align="center">
+  <img src="./demo.webp" height="400">
+</div>
+
+
 ## Features
 
 - On-demand check
@@ -73,13 +80,6 @@ func onNetStateChanged(state: bool):
 
 > If you have already installed the plugin without the "example" folder, you can download it from the current repository and place it in your project, all other steps remain the same or remove the project folder from your project and install it again with checked example folder.
 
-
-## Example preview
-
-<div align="center">
-<img src="./demo.webp" height="400">
-
-</div>
 
 ## Warning
 
