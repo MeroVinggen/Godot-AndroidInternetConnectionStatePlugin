@@ -1,7 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://cfh7hrwgadwq0"]
+[gd_scene load_steps=4 format=3 uid="uid://cfh7hrwgadwq0"]
 
 [ext_resource type="Script" uid="uid://dkti05ymqh5pb" path="res://example/test.gd" id="1_2wfck"]
 [ext_resource type="Theme" uid="uid://dnelevd6vqpti" path="res://example/theme.tres" id="1_ilcrk"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ilcrk"]
+corner_radius_top_left = 100
+corner_radius_top_right = 100
+corner_radius_bottom_right = 100
+corner_radius_bottom_left = 100
 
 [node name="Test" type="MarginContainer"]
 anchors_preset = 15
@@ -20,6 +26,15 @@ script = ExtResource("1_2wfck")
 layout_mode = 2
 theme_override_constants/separation = 40
 alignment = 1
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="StateIndicator" type="Panel" parent="VBoxContainer/HBoxContainer4"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ilcrk")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
