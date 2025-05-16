@@ -16,7 +16,7 @@ Special thanks to the YouTube channel “Coding With Nothing”.
 ## Example preview
 
 <div align="center">
-  <img src="./demo.webp" height="400">
+  <img src="./demo.gif" height="400">
 </div>
 
 
