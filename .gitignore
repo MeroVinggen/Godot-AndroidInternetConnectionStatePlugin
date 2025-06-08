@@ -1,6 +1,7 @@
 extra
 android
 build
+dev
 
 # Godot 4+ specific ignores
 .godot/
