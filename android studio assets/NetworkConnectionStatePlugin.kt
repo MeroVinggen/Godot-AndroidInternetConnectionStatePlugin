@@ -20,6 +20,7 @@ class NetworkConnectionStatePlugin(godot: Godot): GodotPlugin(godot) {
 
     private var stateUpdateDelay: Long = 1500
     private var preState: Boolean = false
+    private var preNetworkType: String = ""
 
     private val handler = Handler(Looper.getMainLooper())
     private val emitStateRunnable = Runnable {
@@ -33,6 +34,7 @@ class NetworkConnectionStatePlugin(godot: Godot): GodotPlugin(godot) {
     override fun getPluginSignals(): MutableSet<SignalInfo> {
         val signals: MutableSet<SignalInfo> = mutableSetOf()
         signals.add(SignalInfo("stateChanged", String::class.java))
+        signals.add(SignalInfo("networkTypeChanged", String::class.java))
         return signals
     }
 
@@ -61,25 +63,47 @@ class NetworkConnectionStatePlugin(godot: Godot): GodotPlugin(godot) {
 
     private fun emitCurrentState() {
         val networkConnectionState = isNetworkConnected()
+        val currentNetworkType = getActiveNetworkType()
 
-        if (preState == networkConnectionState) {
-            return
+        if (preState != networkConnectionState) {
+            preState = networkConnectionState
+            emitSignal("stateChanged", "$networkConnectionState")
         }
 
-        preState = networkConnectionState
-
-        emitSignal("stateChanged", "$networkConnectionState")
+        if (preNetworkType != currentNetworkType) {
+            preNetworkType = currentNetworkType
+            emitSignal("networkTypeChanged", currentNetworkType)
+        }
     }
 
     @UsedByGodot
     private fun isNetworkConnected(): Boolean {
+        return getActiveNetworkType() != "NONE"
+    }
+
+    @UsedByGodot
+    private fun getActiveNetworkType(): String {
         val connectionManager = activity?.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
         val activeNetwork = connectionManager.activeNetwork
-
         val networkCapabilities = connectionManager.getNetworkCapabilities(activeNetwork)
 
-        return networkCapabilities != null &&
-                (networkCapabilities.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR) ||
-                        networkCapabilities.hasTransport(NetworkCapabilities.TRANSPORT_WIFI))
+        if (networkCapabilities != null && networkCapabilities.hasCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET)) {
+            // Check for WiFi
+            if (networkCapabilities.hasTransport(NetworkCapabilities.TRANSPORT_WIFI)) {
+                return "WIFI"
+            }
+
+            // Check for Cellular
+            if (networkCapabilities.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR)) {
+                return "CELLULAR"
+            }
+
+            // Check for Ethernet
+            if (networkCapabilities.hasTransport(NetworkCapabilities.TRANSPORT_ETHERNET)) {
+                return "ETHERNET"
+            }
+        }
+
+        return "NONE"
     }
 }

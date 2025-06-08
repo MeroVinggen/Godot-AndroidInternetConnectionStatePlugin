@@ -8,7 +8,7 @@
 
 ## About
 
-The plugin provides you with the ability to check whether the Android user is connected to the Internet or not (the plugin checks both Wi-Fi and cellular connections) and real-time state handling.
+The plugin provides you with the ability to check whether the Android user is connected to the Internet or not (the plugin checks for Wi-Fi, cellular and Ethernet connections) and real-time state or network type change.
 
 Special thanks to the YouTube channel “Coding With Nothing”.
 
@@ -22,8 +22,8 @@ Special thanks to the YouTube channel “Coding With Nothing”.
 
 ## Features
 
-- On-demand check
-- Real-time observing (signal connection)
+- On-demand network state/type check
+- Real-time network state/type change monitoring
 
 
 ## Requirements 
@@ -55,18 +55,21 @@ or instantiate `AndroidNetworkState`
 ```
 var netState: AndroidNetworkState = AndroidNetworkState.new()
 ```
-- use `hasNetwork` method to get current connection state:
-```
-print("cur net connection state: ", netState.hasNetwork())
-```
-- subscribe to `stateChanged(curState: bool)` signal to get current connection state on change:
-```
-func _ready() -> void:
-  netState.stateChanged.connect(onNetStateChanged)
 
-func onNetStateChanged(state: bool):
-	# your code
-```
+
+### Methods
+
+- `hasNetwork` - return current network connections state as bool (for any of: WIFI, cellular or Ethernet)
+- `hasWIFI` - same as `hasNetwork` but checks only for WIFI
+- `hasCellular` - same as `hasNetwork` but checks only for cellular
+- `hasEthernet` - same as `hasNetwork` but checks only for Ethernet
+- `getActiveNetworkType` - return current connected network name ("WIFI" | "CELLULAR" | "ETHERNET") or "NONE"
+
+
+### Signals
+
+- `stateChanged(curState: bool)` - emitting on network connection change
+- `networkTypeChanged(networkType: String)` - emitting on network type change
 
 
 ## Example
