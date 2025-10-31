@@ -19,6 +19,12 @@
   <img src="./demo.gif" height="400">
 </div>
 
+## See my other plugins
+
+- [Projectile on curve 2D](https://github.com/MeroVinggen/Godot-ProjectileOnCurve2DPlugin)
+- [
+Vector2 editor](https://github.com/MeroVinggen/Godot-Vector2ArrayEditorPlugin)
+- [Threaded Resource Save-Load](https://github.com/MeroVinggen/Godot-ThreadedResourceSaveLoadPlugin)
 
 ## About
 
